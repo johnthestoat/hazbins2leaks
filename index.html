@@ -61,6 +61,7 @@ IPRT: Score/Original Recording`
         const img = document.createElement("img");
         img.src = file.name;
         img.alt = file.name;
+        img.style.width = "50%"; /* <-- Added style */
         details.appendChild(img);
       } else {
         const p = document.createElement("p");
