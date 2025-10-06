@@ -64,7 +64,7 @@ IPRT: Score/Original Recording`
     for (const file of files) {
       const details = document.createElement("details");
       const summary = document.createElement("summary");
-      summary.textContent = file.name + (file.description ? ` — ${file.description}` : "");
+      summary.textContent = file.name + (file.description ? ` _ ${file.description}` : "");
       details.appendChild(summary);
 
       if (file.type === "text") {
