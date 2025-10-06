@@ -10,6 +10,11 @@
       display: block;
       margin: 10px 0;
     }
+    video {
+      width: 50%;
+      display: block;
+      margin: 10px 0;
+    }
   </style>
 </head>
 <body>
@@ -50,7 +55,8 @@ IPRT: Score/Original Recording`
       },
       { name: "synopsis.png", type: "image" },
       { name: "2x07.png", type: "image" },
-      { name: "Tracks For Episodes 1-4.png", type: "image" }
+      { name: "Tracks For Episodes 1-4.png", type: "image" },
+      { name: "1006.mp4", type: "video", description: "Low-Res Unreleased Draft Teaser" }
     ];
 
     const viewer = document.getElementById("viewer");
@@ -58,7 +64,7 @@ IPRT: Score/Original Recording`
     for (const file of files) {
       const details = document.createElement("details");
       const summary = document.createElement("summary");
-      summary.textContent = file.name;
+      summary.textContent = file.name + (file.description ? ` — ${file.description}` : "");
       details.appendChild(summary);
 
       if (file.type === "text") {
@@ -70,6 +76,11 @@ IPRT: Score/Original Recording`
         img.src = file.name;
         img.alt = file.name;
         details.appendChild(img);
+      } else if (file.type === "video") {
+        const video = document.createElement("video");
+        video.src = file.name;
+        video.controls = true;
+        details.appendChild(video);
       } else {
         const p = document.createElement("p");
         p.textContent = "(file not found)";
