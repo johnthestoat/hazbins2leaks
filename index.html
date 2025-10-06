@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple File Viewer</title>
+</head>
+<body>
+
+  <marquee style="color: red; font-weight: bold;">
+    Due not sue me. If you want these taken down, just email me at JohnTheStoat@proton.me
+  </marquee>
+
+  <h1>Folder Viewer</h1>
+
+  <p>
+    I’ve uploaded these new Hazbin Hotel: Season 2 leaks here to make them easier to access.  
+    I’m not the original poster or source of the material. I will keep this site updated as new leaks are published.
+  </p>
+
+  <div id="viewer"></div>
+
+  <script>
+    const files = [
+      {
+        name: "metadata.txt",
+        type: "text",
+        content: `LIST INFO
+INAM: Gravity
+IART: Hazbin Hotel/Jessica Vosk/Alex Brightman
+IPRD: Hazbin Hotel: Season Two (Original Soundtrack)
+ICMT: Hazbin Hotel: Season Two (Original Soundtrack) - Track 5. © 2025 A24 and Amazon MGM. Distributed by Amazon Music.
+TRCK: 5
+ICRD: 2025
+IGNR: Soundtrack
+ICOP: © 2025 A24 and Amazon MGM
+ISFT: WAV PCM 24-bit stereo
+ICMS: Mastered for digital distribution
+ISBJ: Soundtrack
+IENG: Produced by A24 and Amazon MGM
+ICSU: Rights reserved under ©
+IPRT: Score/Original Recording`
+      },
+      { name: "synopsis.png", type: "image" },
+      { name: "2x07.png", type: "image" },
+      { name: "Tracks For Episodes 1-4.png", type: "image" }
+    ];
+
+    const viewer = document.getElementById("viewer");
+
+    for (const file of files) {
+      const details = document.createElement("details");
+      const summary = document.createElement("summary");
+      summary.textContent = file.name;
+      details.appendChild(summary);
+
+      if (file.type === "text") {
+        const pre = document.createElement("pre");
+        pre.textContent = file.content;
+        details.appendChild(pre);
+      } else if (file.type === "image") {
+        const img = document.createElement("img");
+        img.src = file.name;
+        img.alt = file.name;
+        details.appendChild(img);
+      } else {
+        const p = document.createElement("p");
+        p.textContent = "(file not found)";
+        details.appendChild(p);
+      }
+
+      viewer.appendChild(details);
+    }
+  </script>
+</body>
+</html>
